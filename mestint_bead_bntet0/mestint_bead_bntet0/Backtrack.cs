@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mestint_bead_bntet0
 {
-    internal class Backtrack
+    public class Backtrack
     {
     }
 }
