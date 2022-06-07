@@ -52,17 +52,80 @@ namespace mestint_bead_bntet0
 
         public override bool IsGoalState()
         {
-            throw new NotImplementedException();
+            return last_x == goal[0] && last_y == goal[1];
         }
 
         public override int NumberOfOperators()
         {
-            throw new NotImplementedException();
+            return 4;
         }
 
         public override bool SuperOperator(int i)
         {
-            throw new NotImplementedException();
+            switch (i)
+            {
+                case 0:
+                    
+                default:
+                    return false;
+            }
+        }
+
+        public bool Move(int row, int column)
+        {
+            try
+            {
+                int Row = last_x + (row * hop);
+                int Column = last_y + (column * hop);
+                if (preMove(Row,Column))
+                {
+                    if (!IsState())
+                    {
+                        return false;
+                    }
+                    last_x = Row;
+                    last_y = Column;
+                    Circle();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return false;
+        }
+
+        public bool preMove(int row, int column)
+        {
+            if (row > -1 && row < 8 && column > -1 && column < 8)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Circle()
+        {
+            for (int i = 0; i < hopPosition.Length; i++)
+            {
+                if (last_x == hopPosition[i,0] && last_y == hopPosition[0,1] && hop == 2)
+                {
+                    hop = 3;
+                }
+                else if(last_x == hopPosition[i, 0] && last_y == hopPosition[0, 1] && hop == 3)
+                {
+                    hop = 2;
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return "x: " + last_x + ", y: " + last_y;
         }
     }
 }
