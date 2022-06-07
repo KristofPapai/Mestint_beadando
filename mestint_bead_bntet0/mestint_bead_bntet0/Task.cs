@@ -13,8 +13,28 @@ namespace mestint_bead_bntet0
         public Task() {
             //a jobb alsó sarka a táblának a célállapotunk.
             goal = new int[] { 7, 7 };
-            wrong_positions = new int[,] { { 2, 2 }, { 7, 2 }, { 1, 4 }, { 5, 5 }, { 3, 7 } };
-            hopPosition = new int[,] { { 0, 4 }, { 0, 7 }, { 2, 1 }, { 2, 3 }, { 2, 6 }, { 3, 4 }, { 3, 5 }, { 4, 0 }, { 4, 3 }, { 6, 1 }, { 6, 5 }, { 7, 4 }, { 7, 6 } };
+            wrong_positions = new int[,] {
+                { 2, 2 },
+                { 7, 2 },
+                { 1, 4 },
+                { 5, 5 },
+                { 3, 7 }
+            };
+            hopPosition = new int[,] { 
+                { 0, 4 },
+                { 0, 7 },
+                { 2, 1 },
+                { 2, 3 },
+                { 2, 6 },
+                { 3, 4 },
+                { 3, 5 },
+                { 4, 0 },
+                { 4, 3 },
+                { 6, 1 },
+                { 6, 5 },
+                { 7, 4 },
+                { 7, 6 } 
+            };
             last_x = 0;
             last_y = 0;
             hop = 2;
@@ -29,28 +49,39 @@ namespace mestint_bead_bntet0
         int hop;
         public override bool IsState()
         {
-
+            //Console.WriteLine("Méret wp: {0}", wrong_positions.GetLength(0));
             bool state = true;
-            for (int i = 0; i < (wrong_positions.Length - 5); i++)
+            for (int i = 0; i < (wrong_positions.GetLength(0)); i++)
             {
                 //itt az indexelésemmel lesz valami fos
                 if ((last_x + 1) == wrong_positions[i, 0] && last_y == wrong_positions[i, 1])
                 {
+                    //Console.WriteLine("belép ide1");
+                    //Console.WriteLine(wrong_positions[i, 0]);
                     return false;
                 }
                 else if ((last_x - 1) == wrong_positions[i, 0] && last_y == wrong_positions[i, 1])
                 {
+                    //Console.WriteLine("belép ide2");
                     return false;
                 }
-                else if (last_x == wrong_positions[i,0] && last_y +1 == wrong_positions[i,1])
+                //if (last_x+1 == wrong_positions[i, 0] && (last_y + 1) == wrong_positions[i, 1])
+                //{
+                //    Console.WriteLine("true");
+                //}
+                else if (last_x == wrong_positions[i,0] && (last_y + 1) == wrong_positions[i,1])
                 {
+                    //Console.WriteLine("belép ide3");
                     return false;
                 }
-                else if (last_x == wrong_positions[i, 0] && last_y - 1 == wrong_positions[i, 1])
+                else if (last_x == wrong_positions[i, 0] && (last_y - 1) == wrong_positions[i, 1])
                 {
+                    //Console.WriteLine("belép ide4");
+
                     return false;
                 }
             }
+            //Console.WriteLine("statet ad vissza");
             return state;
         }
 
@@ -66,18 +97,16 @@ namespace mestint_bead_bntet0
 
         public override bool SuperOperator(int i)
         {
+            //Console.WriteLine(i);
             switch (i)
             {
                 case 0:
                     return Move(-1, 0);
                 case 1:
-
                     return Move(0, -1);
                 case 2:
-
                     return Move(1, 0);
                 case 3:
-
                     return Move(0, 1);
                 default:
                     return false;
@@ -98,6 +127,7 @@ namespace mestint_bead_bntet0
                     }
                     last_x = Row;
                     last_y = Column;
+                    //Console.WriteLine("x: {0} y: {1}",last_x,last_y);
                     Circle();
                     return true;
                 }
@@ -125,7 +155,7 @@ namespace mestint_bead_bntet0
         public void Circle()
         {
             //hopp positiont átírni
-            for (int i = 0; i < hopPosition.Length-13; i++)
+            for (int i = 0; i < hopPosition.GetLength(0); i++)
             {
                 if (last_x == hopPosition[i,0] && last_y == hopPosition[0,1] && hop == 2)
                 {
