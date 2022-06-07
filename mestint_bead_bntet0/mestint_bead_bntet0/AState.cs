@@ -13,10 +13,6 @@ namespace mestint_bead_bntet0
         public abstract int NumberOfOperators();
         public abstract bool SuperOperator(int i);
 
-        public virtual object Clone()
-        {
-            return MemberwiseClone();
-        }
         public override bool Equals(object obj)
         {
             return false;
@@ -24,6 +20,11 @@ namespace mestint_bead_bntet0
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public object Clone()
+        {
+            return base.MemberwiseClone();
         }
     }
 }

@@ -8,13 +8,13 @@ namespace mestint_bead_bntet0
 {
     public abstract class AFinder
     {
-        public Peak startPeak;
+        private Peak startPeak;
         public AFinder(Peak startPeak)
         {
             this.startPeak = startPeak;
         }
 
-        public Peak GetStartPeak()
+        protected Peak GetStartPeak()
         {
             return startPeak;
         }

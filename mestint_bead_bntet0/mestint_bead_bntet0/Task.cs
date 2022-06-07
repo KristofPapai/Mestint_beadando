@@ -8,41 +8,45 @@ namespace mestint_bead_bntet0
 {
     public class Task : AState
     {
-        int[] goal;
-        int[,] blackField;
-        int[,] hopPosition;
-        int last_x;
-        int last_y;
-        int hop;
+
 
         public Task() {
             //a jobb alsó sarka a táblának a célállapotunk.
             goal = new int[] { 7, 7 };
-            blackField = new int[,] { { 2, 2 }, { 7, 2 }, { 1, 4 }, { 5, 5 }, { 3, 7 } };
+            wrong_positions = new int[,] { { 2, 2 }, { 7, 2 }, { 1, 4 }, { 5, 5 }, { 3, 7 } };
             hopPosition = new int[,] { { 0, 4 }, { 0, 7 }, { 2, 1 }, { 2, 3 }, { 2, 6 }, { 3, 4 }, { 3, 5 }, { 4, 0 }, { 4, 3 }, { 6, 1 }, { 6, 5 }, { 7, 4 }, { 7, 6 } };
             last_x = 0;
             last_y = 0;
             hop = 2;
             //Itt beállítottam a tábla kezdőállapotát a feladat alapján.        
         }
+
+        int[] goal;
+        int[,] wrong_positions;
+        int[,] hopPosition;
+        int last_x;
+        int last_y;
+        int hop;
         public override bool IsState()
         {
+
             bool state = true;
-            for (int i = 0; i < blackField.Length; i++)
+            for (int i = 0; i < (wrong_positions.Length - 5); i++)
             {
-                if ((last_x + 1) == blackField[i, 0] && last_y == blackField[i, 1])
+                //itt az indexelésemmel lesz valami fos
+                if ((last_x + 1) == wrong_positions[i, 0] && last_y == wrong_positions[i, 1])
                 {
                     return false;
                 }
-                else if ((last_x - 1) == blackField[i, 0] && last_y == blackField[i, 1])
+                else if ((last_x - 1) == wrong_positions[i, 0] && last_y == wrong_positions[i, 1])
                 {
                     return false;
                 }
-                else if (last_x == blackField[i,0] && (last_y +1) == blackField[i,1])
+                else if (last_x == wrong_positions[i,0] && last_y +1 == wrong_positions[i,1])
                 {
                     return false;
                 }
-                else if (last_x == blackField[i, 0] && (last_y - 1) == blackField[i, 1])
+                else if (last_x == wrong_positions[i, 0] && last_y - 1 == wrong_positions[i, 1])
                 {
                     return false;
                 }
@@ -65,13 +69,22 @@ namespace mestint_bead_bntet0
             switch (i)
             {
                 case 0:
-                    
+                    return Move(-1, 0);
+                case 1:
+
+                    return Move(0, -1);
+                case 2:
+
+                    return Move(1, 0);
+                case 3:
+
+                    return Move(0, 1);
                 default:
                     return false;
             }
         }
 
-        public bool Move(int row, int column)
+        private bool Move(int row, int column)
         {
             try
             {
@@ -89,8 +102,9 @@ namespace mestint_bead_bntet0
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 return false;
             }
             return false;
@@ -110,7 +124,8 @@ namespace mestint_bead_bntet0
 
         public void Circle()
         {
-            for (int i = 0; i < hopPosition.Length; i++)
+            //hopp positiont átírni
+            for (int i = 0; i < hopPosition.Length-13; i++)
             {
                 if (last_x == hopPosition[i,0] && last_y == hopPosition[0,1] && hop == 2)
                 {

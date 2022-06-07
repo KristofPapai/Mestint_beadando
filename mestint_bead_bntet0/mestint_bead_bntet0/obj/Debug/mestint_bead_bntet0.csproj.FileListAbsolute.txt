@@ -1,0 +1,8 @@
+C:\Users\Kristóf\Desktop\Mestint_beadando\mestint_bead_bntet0\mestint_bead_bntet0\bin\Debug\mestint_bead_bntet0.exe.config
+C:\Users\Kristóf\Desktop\Mestint_beadando\mestint_bead_bntet0\mestint_bead_bntet0\bin\Debug\mestint_bead_bntet0.exe
+C:\Users\Kristóf\Desktop\Mestint_beadando\mestint_bead_bntet0\mestint_bead_bntet0\bin\Debug\mestint_bead_bntet0.pdb
+C:\Users\Kristóf\Desktop\Mestint_beadando\mestint_bead_bntet0\mestint_bead_bntet0\obj\Debug\mestint_bead_bntet0.csproj.AssemblyReference.cache
+C:\Users\Kristóf\Desktop\Mestint_beadando\mestint_bead_bntet0\mestint_bead_bntet0\obj\Debug\mestint_bead_bntet0.csproj.SuggestedBindingRedirects.cache
+C:\Users\Kristóf\Desktop\Mestint_beadando\mestint_bead_bntet0\mestint_bead_bntet0\obj\Debug\mestint_bead_bntet0.csproj.CoreCompileInputs.cache
+C:\Users\Kristóf\Desktop\Mestint_beadando\mestint_bead_bntet0\mestint_bead_bntet0\obj\Debug\mestint_bead_bntet0.exe
+C:\Users\Kristóf\Desktop\Mestint_beadando\mestint_bead_bntet0\mestint_bead_bntet0\obj\Debug\mestint_bead_bntet0.pdb

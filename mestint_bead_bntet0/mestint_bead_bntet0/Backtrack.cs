@@ -18,26 +18,15 @@ namespace mestint_bead_bntet0
             this.memorable = memorable;
         }
 
-        public Backtrack(Peak starPeak) : this(starPeak, 0, false) 
-        {
-        }
-
-        public Backtrack(Peak starPeak,int limit) : this(starPeak, limit, false)
-        {
-        }
-        public Backtrack(Peak starPeak,bool memorable) : this(starPeak, 0, memorable)
-        {
-        }
-
         public override Peak Search()
         {
-            return Search(GetStartPeak());
+            return Find(GetStartPeak());
         }
 
-        private Peak Search(Peak actualPeak)
+        private Peak Find(Peak actualPeak)
         {
             int depth = actualPeak.GetDepth();
-            if (limit > 0 && depth >= limit)
+            if (limit > 0 && depth > limit)
             {
                 return null;
             }
@@ -63,7 +52,7 @@ namespace mestint_bead_bntet0
                 Peak newPeak = new Peak(actualPeak);
                 if (newPeak.SuperOperator(i))
                 {
-                    Peak terminalPeak = Search(newPeak);
+                    Peak terminalPeak = Find(newPeak);
                     if (terminalPeak != null)
                     {
                         return terminalPeak;

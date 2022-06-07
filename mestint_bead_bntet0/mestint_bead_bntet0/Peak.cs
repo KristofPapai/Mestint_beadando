@@ -48,6 +48,14 @@ namespace mestint_bead_bntet0
         }
         public override bool Equals(object obj)
         {
+            if (this == obj)
+            {
+                return true;
+            }
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
             Peak peak = (Peak)obj;
             return state.Equals(peak.state);
         }
@@ -55,19 +63,10 @@ namespace mestint_bead_bntet0
         {
             return state.GetHashCode();
         }
-
-        public List<Peak> Expansion()
+        public override string ToString()
         {
-            List<Peak> newPeaksList = new List<Peak>();
-            for (int i = 0; i < NumberOfOperators(); i++)
-            {
-                Peak newPeak = new Peak(this);
-                if (newPeak.SuperOperator(i))
-                {
-                    newPeaksList.Add(newPeak);
-                }
-            }
-            return newPeaksList;
+            return state.ToString();
         }
+
     }
 }
