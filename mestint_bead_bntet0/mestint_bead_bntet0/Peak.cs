@@ -40,7 +40,6 @@ namespace mestint_bead_bntet0
         public int NumberOfOperators()
         {
             return state.NumberOfOperators();
-            //itt lehet hibat dob majd arra figyelni kell
         }
         public bool SuperOperator(int i)
         {

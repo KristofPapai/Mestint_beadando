@@ -28,7 +28,6 @@ namespace mestint_bead_bntet0
                 Console.WriteLine("Nincs megoldása a feladatnak.");
                 return;
             }
-            //meg kell forditani a csúcsok sorrendjét
             Stack<Peak> solution = new Stack<Peak>();
             Peak actualPeak = OneTerminalPeak;
             while (actualPeak != null)
