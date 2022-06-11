@@ -8,10 +8,7 @@ namespace mestint_bead_bntet0
 {
     public class Task : AState
     {
-
-
         public Task() {
-            //a jobb alsó sarka a táblának a célállapotunk.
             goal = new int[] { 7, 7 };
             wrong_positions = new int[,] {
                 { 2, 2 },
@@ -37,8 +34,7 @@ namespace mestint_bead_bntet0
             };
             last_x = 0;
             last_y = 0;
-            hop = 2;
-            //Itt beállítottam a tábla kezdőállapotát a feladat alapján.        
+            hop = 2;    
         }
 
         int[] goal;
@@ -47,41 +43,30 @@ namespace mestint_bead_bntet0
         int last_x;
         int last_y;
         int hop;
+
         public override bool IsState()
         {
-            //Console.WriteLine("Méret wp: {0}", wrong_positions.GetLength(0));
             bool state = true;
             for (int i = 0; i < (wrong_positions.GetLength(0)); i++)
             {
-                //itt az indexelésemmel lesz valami fos
                 if ((last_x + 1) == wrong_positions[i, 0] && last_y == wrong_positions[i, 1])
                 {
-                    //Console.WriteLine("belép ide1");
-                    //Console.WriteLine(wrong_positions[i, 0]);
                     return false;
                 }
                 else if ((last_x - 1) == wrong_positions[i, 0] && last_y == wrong_positions[i, 1])
                 {
-                    //Console.WriteLine("belép ide2");
                     return false;
                 }
-                //if (last_x+1 == wrong_positions[i, 0] && (last_y + 1) == wrong_positions[i, 1])
-                //{
-                //    Console.WriteLine("true");
-                //}
-                else if (last_x == wrong_positions[i,0] && (last_y + 1) == wrong_positions[i,1])
+                else if (last_x == wrong_positions[i, 0] && (last_y + 1) == wrong_positions[i, 1])
                 {
-                    //Console.WriteLine("belép ide3");
                     return false;
                 }
                 else if (last_x == wrong_positions[i, 0] && (last_y - 1) == wrong_positions[i, 1])
                 {
-                    //Console.WriteLine("belép ide4");
-
                     return false;
                 }
+
             }
-            //Console.WriteLine("statet ad vissza");
             return state;
         }
 
@@ -97,7 +82,6 @@ namespace mestint_bead_bntet0
 
         public override bool SuperOperator(int i)
         {
-            //Console.WriteLine(i);
             switch (i)
             {
                 case 0:
@@ -127,7 +111,6 @@ namespace mestint_bead_bntet0
                     }
                     last_x = Row;
                     last_y = Column;
-                    //Console.WriteLine("x: {0} y: {1}",last_x,last_y);
                     Circle();
                     return true;
                 }
@@ -150,18 +133,24 @@ namespace mestint_bead_bntet0
             {
                 return false;
             }
+            for (int i = 0; i < wrong_positions.GetLength(0); i++)
+            {
+                if (row == wrong_positions[i, 0] && column == wrong_positions[i, 1])
+                {
+                    return false;
+                }
+            }
         }
 
         public void Circle()
         {
-            //hopp positiont átírni
             for (int i = 0; i < hopPosition.GetLength(0); i++)
             {
-                if (last_x == hopPosition[i,0] && last_y == hopPosition[0,1] && hop == 2)
+                if (last_x == hopPosition[i,0] && last_y == hopPosition[i,1] && hop == 2)
                 {
                     hop = 3;
                 }
-                else if(last_x == hopPosition[i, 0] && last_y == hopPosition[0, 1] && hop == 3)
+                else if(last_x == hopPosition[i, 0] && last_y == hopPosition[i, 1] && hop == 3)
                 {
                     hop = 2;
                 }

@@ -40,6 +40,7 @@ namespace mestint_bead_bntet0
             {
                 Console.WriteLine(actual);
             }
+            Console.WriteLine("Terminális csúcsot találtunk van megoldás a feladatnak.");
 
         }
     }
